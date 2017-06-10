@@ -36,3 +36,5 @@ export const ARCHIVES_ADD = 'buttercup/archives/ADD';
 export const ARCHIVES_REMOVE = 'buttercup/archives/REMOVE';
 export const ARCHIVES_CLEAR = 'buttercup/archives/CLEAR';
 export const ARCHIVES_SET_CURRENT = 'buttercup/archives/SET_CURRENT';
+
+export const CONFIG_SET = 'buttercup/config/SET';

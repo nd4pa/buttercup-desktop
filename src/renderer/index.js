@@ -6,6 +6,7 @@ import configureStore from '../shared/store/configure-store';
 import { loadArchiveFromSource } from '../shared/actions/archives';
 import * as groupActions from '../shared/actions/groups';
 import * as uiActions from '../shared/actions/ui';
+import { getI18n } from '../shared/utils/i18n';
 import rpc from './system/rpc';
 import { getWorkspace } from './system/buttercup/archive';
 import { importHistoryFromRequest, showHistoryPasswordPrompt } from './system/buttercup/import';
@@ -20,7 +21,14 @@ unhandled();
 // Make crypto faster!
 Buttercup.Web.HashingTools.patchCorePBKDF();
 
-window.__defineGetter__('rpc', () => rpc);
+// Glue Intl to global object
+// Sorry ma!
+Object.assign(global, {
+  i18n: getI18n(),
+  __: (...args) => getI18n().t(...args)
+});
+
+global.__defineGetter__('rpc', () => rpc);
 const store = configureStore({}, 'renderer');
 
 setWindowSize(870, 550, 'light');

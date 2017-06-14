@@ -11,11 +11,11 @@ i18next
     initImmediate: false,
     saveMissing: true,
     defaultNS: 'misc',
-    ns: 'misc',
+    ns: ['misc', 'intro'],
     load: 'currentOnly',
     backend: {
       loadPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.json'),
-      addPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.missing.json'),
+      addPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.json'),
       jsonIndent: 2
     }
   });

@@ -160,7 +160,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "humanize": "^0.0.9",
     "i18next": "^8.4.2",
-    "i18next-sync-fs-backend": "^0.1.0",
+    "i18next-node-fs-sync-backend": "^1.0.0",
     "is-error": "^2.2.1",
     "jsdom": "^9.8.3",
     "json-loader": "^0.5.4",

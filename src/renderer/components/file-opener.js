@@ -54,7 +54,7 @@ class FileOpener extends Component {
                 <img src={folder} />
               </NavIcon>
               <NavText>
-                <span>Open Archive</span>
+                <span>{__('intro:openArchive')}</span>
                 <Small>Load your offline archive</Small>
               </NavText>
             </NavRow>
@@ -63,6 +63,7 @@ class FileOpener extends Component {
                 <img src={fileAdd} />
               </NavIcon>
               <NavText>
+                <span>{__('intro:newArchive')}</span>
                 <span>New Archive</span>
                 <Small>Create an offline archive</Small>
               </NavText>

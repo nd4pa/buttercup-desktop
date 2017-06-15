@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import Backend from 'i18next-sync-fs-backend';
+import Backend from 'i18next-node-fs-sync-backend';
 import path from 'path';
 
 i18next
@@ -14,8 +14,8 @@ i18next
     ns: ['misc', 'intro'],
     load: 'currentOnly',
     backend: {
-      loadPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.json'),
-      addPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.json'),
+      loadPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.yml'),
+      addPath: path.resolve(__dirname, '../../locales', '{{lng}}', '{{ns}}.yml'),
       jsonIndent: 2
     }
   });

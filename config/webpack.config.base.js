@@ -2,8 +2,6 @@ const { join } = require('path');
 
 module.exports = {
   module: {
-    exprContextRegExp: /$^/,
-    exprContextCritical: false,
     rules: [
       {
         test: /\.js$/,
@@ -28,9 +26,6 @@ module.exports = {
     path: join(__dirname, '../app/dist'),
     filename: '[name].bundle.js',
     libraryTarget: 'commonjs2'
-  },
-  node: {
-    fs: false
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.scss']

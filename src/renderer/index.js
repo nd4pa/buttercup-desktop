@@ -9,7 +9,10 @@ import * as groupActions from '../shared/actions/groups';
 import * as uiActions from '../shared/actions/ui';
 import rpc from './system/rpc';
 import { getWorkspace } from './system/buttercup/archive';
-import { importHistoryFromRequest, showHistoryPasswordPrompt } from './system/buttercup/import';
+import {
+  importHistoryFromRequest,
+  showHistoryPasswordPrompt
+} from './system/buttercup/import';
 import { setWindowSize } from './system/utils';
 import { setupShortcuts } from './system/shortcuts';
 import Root from './containers/root';
@@ -37,7 +40,7 @@ rpc.on('load-archive', payload => {
 
 rpc.on('export-json', payload => {
   store.dispatch(exportToFile(payload));
-})
+});
 
 rpc.on('is-in-workspace', () => {
   rpc.emit('in-workspace', getWorkspace() !== null);
@@ -56,7 +59,8 @@ rpc.on('import-history-prompt', () => {
   showHistoryPasswordPrompt()
     .then(result => {
       rpc.emit('import-history-prompt-resp', result);
-    }).catch(() => {
+    })
+    .catch(() => {
       rpc.emit('import-history-prompt-resp', null);
     });
 });

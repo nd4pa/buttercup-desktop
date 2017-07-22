@@ -7,14 +7,18 @@ import { importArchive } from './buttercup';
 
 const windowManager = getWindowManager();
 const dialogOptions = {
-  filters: [{
-    name: 'Buttercup Archives',
-    extensions: ['bcup']
-  }]
+  filters: [
+    {
+      name: 'Buttercup Archives',
+      extensions: ['bcup']
+    }
+  ]
 };
 
 function normalizePath(filePath) {
-  filePath = decodeURI(filePath.replace(isWindows() ? /^file:[/]{2,3}/ : 'file://', ''));
+  filePath = decodeURI(
+    filePath.replace(isWindows() ? /^file:[/]{2,3}/ : 'file://', '')
+  );
   filePath = path.normalize(filePath);
   return filePath;
 }
@@ -114,11 +118,11 @@ const showImportDialog = function(focusedWindow, type) {
       password: false,
       name: '1Password'
     },
-    'kdbx': {
+    kdbx: {
       password: true,
       name: 'KeePass'
     },
-    'csv': {
+    csv: {
       password: false,
       name: 'LastPass'
     }
@@ -142,11 +146,13 @@ const showImportDialog = function(focusedWindow, type) {
     focusedWindow.rpc.emit('import-history', { history });
   };
 
-  const [ filename ] = dialog.showOpenDialog(focusedWindow, {
-    filters: [{
-      name: `${typeInfo.name} Archives`,
-      extensions: [type]
-    }],
+  const [filename] = dialog.showOpenDialog(focusedWindow, {
+    filters: [
+      {
+        name: `${typeInfo.name} Archives`,
+        extensions: [type]
+      }
+    ],
     title: `Load a ${typeInfo.name} archive`
   });
 
@@ -162,9 +168,7 @@ const showImportDialog = function(focusedWindow, type) {
         .catch(handleError);
     });
   } else {
-    importArchive(type, filename)
-      .then(handleSuccess)
-      .catch(handleError);
+    importArchive(type, filename).then(handleSuccess).catch(handleError);
   }
 };
 
@@ -176,7 +180,8 @@ export function openFileForImporting(focusedWindow, type) {
   if (focusedWindow && focusedWindow.isIntro()) {
     dialog.showMessageBox(focusedWindow, {
       title: 'Importing is not available',
-      message: 'To import an archive file, you must unlock a Buttercup archive first.'
+      message:
+        'To import an archive file, you must unlock a Buttercup archive first.'
     });
     return;
   }
@@ -211,3 +216,11 @@ export function newFile(focusedWindow) {
   }
   showSaveDialog(focusedWindow);
 }
+
+/**
+ * Export file in desired type
+ * @param  {BrowserWindow} focusedWindow
+ * @param  {String} type of the exported file
+ * @returns {void}
+ */
+export function saveFileForExporting(focusedWindow, type) {}

@@ -1,5 +1,10 @@
 import { getWindowManager } from '../../lib/window-manager';
-import { openFile, openFileForImporting, newFile } from '../../lib/files';
+import {
+  openFile,
+  openFileForImporting,
+  saveFileForExporting,
+  newFile
+} from '../../lib/files';
 
 const windowManager = getWindowManager();
 
@@ -24,15 +29,28 @@ export default [
     submenu: [
       {
         label: 'From KeePass archive (.kdbx)',
-        click: (item, focusedWindow) => openFileForImporting(focusedWindow, 'kdbx')
+        click: (item, focusedWindow) =>
+          openFileForImporting(focusedWindow, 'kdbx')
       },
       {
         label: 'From 1Password archive (.1pif)',
-        click: (item, focusedWindow) => openFileForImporting(focusedWindow, '1pif')
+        click: (item, focusedWindow) =>
+          openFileForImporting(focusedWindow, '1pif')
       },
       {
         label: 'From LastPass archive (.csv)',
-        click: (item, focusedWindow) => openFileForImporting(focusedWindow, 'csv')
+        click: (item, focusedWindow) =>
+          openFileForImporting(focusedWindow, 'csv')
+      }
+    ]
+  },
+  {
+    label: 'Export',
+    submenu: [
+      {
+        label: 'To JavaScript Object Notation (.json)',
+        click: (item, focusedWindow) =>
+          saveFileForExporting(focusedWindow, 'json')
       }
     ]
   },

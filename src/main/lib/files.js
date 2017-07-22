@@ -252,4 +252,19 @@ export function saveFileForExporting(focusedWindow, type) {
  * @param  {ExportTypes} type of the file to export
  * @return {void}
  */
-export function showExportDialog(focusedWindow, type) {}
+export function showExportDialog(focusedWindow, type) {
+  const fileName = dialog.showSaveDialog(focusedWindow, {
+    title: 'Export workspace to a file',
+    filters: [
+      {
+        name: `File to export (.${type})`,
+        extensions: [type]
+      }
+    ]
+  });
+
+  focusedWindow.rpc.emit(`export-${type}`, {
+    type,
+    path: normalizePath(fileName)
+  });
+}

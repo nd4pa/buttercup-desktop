@@ -5,3 +5,7 @@ export const ArchiveTypes = {
   NEXTCLOUD: 'nextcloud',
   WEBDAV: 'webdav'
 };
+
+export const ExportTypes = {
+  JSON: 'json'
+}

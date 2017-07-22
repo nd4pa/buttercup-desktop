@@ -1,4 +1,5 @@
 import { getWindowManager } from '../../lib/window-manager';
+import { ExportTypes } from '../../../shared/buttercup/types';
 import {
   openFile,
   openFileForImporting,
@@ -50,7 +51,7 @@ export default [
       {
         label: 'To JavaScript Object Notation (.json)',
         click: (item, focusedWindow) =>
-          saveFileForExporting(focusedWindow, 'json')
+          saveFileForExporting(focusedWindow, ExportTypes.JSON) // aka 'json'
       }
     ]
   },

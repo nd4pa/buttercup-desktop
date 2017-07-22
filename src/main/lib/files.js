@@ -220,7 +220,7 @@ export function newFile(focusedWindow) {
 /**
  * Export file in desired type
  * @param  {BrowserWindow} focusedWindow
- * @param  {String} type of the exported file
+ * @param  {ExportTypes} type of the exported file
  * @returns {void}
  */
 export function saveFileForExporting(focusedWindow, type) {
@@ -249,7 +249,7 @@ export function saveFileForExporting(focusedWindow, type) {
 /**
  * Open a dialog to select where to save the file
  * @param  {BrowserWindow} focusedWindow
- * @param  {String} type of the file to export
+ * @param  {ExportTypes} type of the file to export
  * @return {void}
  */
 export function showExportDialog(focusedWindow, type) {}

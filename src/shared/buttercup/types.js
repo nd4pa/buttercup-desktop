@@ -8,4 +8,4 @@ export const ArchiveTypes = {
 
 export const ExportTypes = {
   JSON: 'json'
-}
+};

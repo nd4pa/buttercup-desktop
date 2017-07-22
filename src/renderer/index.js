@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import configureStore from '../shared/store/configure-store';
 import { loadArchiveFromSource } from '../shared/actions/archives';
+import { exportToFile } from '../shared/actions/export';
 import * as groupActions from '../shared/actions/groups';
 import * as uiActions from '../shared/actions/ui';
 import rpc from './system/rpc';
@@ -33,6 +34,10 @@ rpc.on('ready', () => {
 rpc.on('load-archive', payload => {
   store.dispatch(loadArchiveFromSource(payload));
 });
+
+rpc.on('export-json', payload => {
+  store.dispatch(exportToFile(payload));
+})
 
 rpc.on('is-in-workspace', () => {
   rpc.emit('in-workspace', getWorkspace() !== null);

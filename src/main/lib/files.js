@@ -223,4 +223,33 @@ export function newFile(focusedWindow) {
  * @param  {String} type of the exported file
  * @returns {void}
  */
-export function saveFileForExporting(focusedWindow, type) {}
+export function saveFileForExporting(focusedWindow, type) {
+  if (!focusedWindow) {
+    focusedWindow = BrowserWindow.getFocusedWindow();
+  }
+
+  if (!focusedWindow) {
+    windowManager.buildWindowOfType('main', win =>
+      saveFileForExporting(win, type)
+    );
+    return;
+  }
+
+  if (focusedWindow.isIntro()) {
+    dialog.showMessageBox(focusedWindow, {
+      title: 'Exporting is not available',
+      message: 'To export a workspace, you must open an archive.'
+    });
+    return;
+  }
+
+  showExportDialog(focusedWindow, type);
+}
+
+/**
+ * Open a dialog to select where to save the file
+ * @param  {BrowserWindow} focusedWindow
+ * @param  {String} type of the file to export
+ * @return {void}
+ */
+export function showExportDialog(focusedWindow, type) {}
